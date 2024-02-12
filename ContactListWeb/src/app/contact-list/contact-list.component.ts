@@ -1,21 +1,24 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ContactService } from '../service/contact.service';
+import { DatePipe } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-contact-list',
   standalone: true,
-  imports: [],
-  import { ContactService } from './../service/contact.service';
+  imports: [DatePipe,RouterModule],
 templateUrl: './contact-list.component.html',
   styleUrl: './contact-list.component.css'
 })
 export default class ContactListComponent implements OnInit {
 private contactService = inject(ContactService);
 
+contacts: any[] = [];
+
 ngOnInit(): void {
     this.contactService.list()
-    .subscribe(contact => {
-      console.log(contact);
-    })
+    .subscribe((contacts:any) => {
+      this.contacts=contacts
+    });
 }
 }

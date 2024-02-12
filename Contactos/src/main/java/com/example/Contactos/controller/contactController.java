@@ -5,7 +5,7 @@ import com.example.Contactos.service.ContactService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
+@CrossOrigin
 @RestController
 @AllArgsConstructor
 @RequestMapping("api/contacts")
@@ -34,7 +34,7 @@ public class contactController {
         return contactService.update(id, form);
     }
 
-    @DeleteMapping
+    @DeleteMapping("{id}")
     public void delete(Integer id){
         contactService.delete(id);
     }
