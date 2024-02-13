@@ -33,10 +33,9 @@ public class contactController {
                            @RequestBody Contact form){
         return contactService.update(id, form);
     }
-
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("{id}")
-    public void delete(Integer id){
+    public void delete(@PathVariable Integer id){
         contactService.delete(id);
     }
-
 }

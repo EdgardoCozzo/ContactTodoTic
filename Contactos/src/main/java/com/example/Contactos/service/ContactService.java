@@ -38,9 +38,7 @@ public class ContactService {
     }
 
     public void delete (Integer id){
-      Contact contactFromDb = contactRepository
-              .findById(id)
-              .orElse(null);
+      Contact contactFromDb = findById(id);
       contactRepository.delete(contactFromDb);
     }
 }
